@@ -1,0 +1,202 @@
+/* AI Rules Hub — 工具站样式（保留暗色主题，简化视觉噪音） */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #0a0a0f;
+  min-height: 100vh;
+}
+
+/* 保留原有网格背景，降低对比度 */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(99, 102, 241, 0.12), transparent);
+}
+
+/* 顶部轻量光晕（保留原有 orb 元素，减弱强度） */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* 搜索框 */
+.search-box {
+  background: rgba(18, 18, 26, 0.9);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* 规则卡片 — 干净边框，轻 hover */
+.rule-card {
+  background: #12121a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.rule-card:hover {
+  border-color: rgba(99, 102, 241, 0.28);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.tag {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+}
+
+.btn-copy {
+  background: #4f46e5;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-copy:hover {
+  background: #6366f1;
+}
+
+.btn-copy:active {
+  transform: scale(0.98);
+}
+
+.btn-copy.copied {
+  background: #059669;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #c7d2fe 55%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 筛选按钮 */
+.filter-btn {
+  background: #12121a;
+  color: #9ca3af;
+  border: 1px solid #1f2937;
+}
+
+.filter-btn:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #c7d2fe;
+}
+
+.filter-btn.active {
+  background: #4f46e5;
+  color: #fff;
+  border-color: transparent;
+}
+
+/* 分类横向滚动（手机端） */
+.category-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* AdSense 广告位占位 */
+.ad-slot {
+  min-height: 90px;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(18, 18, 26, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b5563;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.ad-slot--responsive {
+  min-height: 100px;
+}
+
+@media (min-width: 768px) {
+  .ad-slot--leaderboard {
+    min-height: 90px;
+  }
+}
+
+/* SEO 介绍区 */
+.seo-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.seo-section h2 {
+  color: #e5e7eb;
+}
+
+.seo-section p,
+.seo-section li {
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rule-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
